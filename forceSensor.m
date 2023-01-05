@@ -8,20 +8,27 @@
 % Last edited by C. Gotelli (January, 2023)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%                      EXECUTE THIS SECTION ONLY
+%                      EXECUTE THIS SECTION FIRST                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Start 
-close all
-daqreset
-imaqreset
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Decide if plotting or not data in real time.
 plotting = true;
 % Time window for compute mean and register in text file.
 twindow = 10;
 drate = 1000;
-SavePath = "C:\Users\admin\Desktop";
+SavePath = "C:\Users\admin\Desktop"; % Where to save the LogFiles.
+
+
+%%%%%%%%%%%%%%%%%%% DO NOT MODIFY FROM THIS POINT DOWN %%%%%%%%%%%%%%%%%%%%
+
+% Reset workspace
+close all
+daqreset
+imaqreset
+
 % Initiation of Data Acquisition device.
 d = daq("ni");
 addinput(d,"Dev1","ai0","Voltage");
@@ -81,8 +88,9 @@ end
 
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%               EXECUTE THIS SECTION AFTER PRESSING CTRL + C
+%           EXECUTE THIS SECTION SECOND (AFTER PRESSING CTRL + C)         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 stop(d)
 
 % Once it goes out of the loop it closes the file
