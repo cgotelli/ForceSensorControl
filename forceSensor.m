@@ -20,12 +20,13 @@ imaqreset
 plotting = true;
 % Time window for compute mean and register in text file.
 twindow = 10;
-
+drate = 1000;
+SavePath = "C:\Users\admin\Desktop";
 % Initiation of Data Acquisition device.
 d = daq("ni");
 addinput(d,"Dev1","ai0","Voltage");
 % Acquisition rate from sensor.
-d.Rate=1000;
+d.Rate=drate;
 %#ok<*AGROW>
 
 % Empty variables for plotting.
