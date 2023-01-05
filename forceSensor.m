@@ -14,13 +14,12 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Decide if plotting or not data in real time.
-plotting = true;
 % Time window for compute mean and register in text file.
 twindow = 10;
 drate = 1000;
 SavePath = "C:\Users\admin\Desktop"; % Where to save the LogFiles.
-
+% Decide if plotting or not data in real time.
+plotting = true;
 
 %%%%%%%%%%%%%%%%%%% DO NOT MODIFY FROM THIS POINT DOWN %%%%%%%%%%%%%%%%%%%%
 
@@ -44,7 +43,7 @@ n = ceil(d.Rate);
 % Gets the initial date and time
 c = clock; 
 % We creat the Logfile with date and time in the name
-fid = fopen(fullfile(pwd, strcat('LogFileForceSensor_', ...
+fid = fopen(fullfile(SavePath, strcat('LogFileForceSensor_', ...
     sprintf('%d',c(1)), sprintf('%02.0f',c(2)), sprintf('%02.0f',c(3)), ...
     sprintf('%02.0f',c(4)), sprintf('%02.0f',c(5)), '.txt')), 'a');
 fprintf(fid,'%s %s', "Time", "Value"); % Writes the file's heading
