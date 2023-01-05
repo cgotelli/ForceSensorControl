@@ -20,7 +20,7 @@ The code must be executed in three steps. The first sets the parameters, the sec
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ```
 
-As the recording has no fixed duration, it is necessary to manually "kill" the process once we want to stop it. For doing it, we just need to go in the Command Window and press `Ctrl + C`.
+As the recording has no fixed duration, it is necessary to manually "kill" the process once we want to stop it. For doing it, we just need to press the red button "Stop" or go in the Command Window and press `Ctrl + C`.
 
 3. Finally, we have to execute the second section of the code by doing the same as in the first step. In this case we need to find the following code in the script:
 ```MATLAB
