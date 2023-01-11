@@ -1,7 +1,7 @@
-function [bedloadTable, aggTable]= getBedload(Path, plotBoth, dt)
+function [bedloadTable, aggTable]= getBedload(Path, plotRate, plotCum, plotBoth, dt)
 % GETBEDLOAD
 % This function reads a file and returns two timetables: the raw table with
-% the default dt (10 seconds), and other with a frequency defined by the 
+% the default dt (10 seconds), and other with a frequency defined by the
 % user. The columns in these tables include the instantaneous bedload rate,
 % the measured weight transformed from voltage values, and the delta of
 % weight from one measurement to the next.
@@ -14,9 +14,9 @@ inputTable = addvars(inputTable,values-values(1),'NewVariableNames','CumBedload'
 
 % Second table with different dt
 aggTable = inputTable;
-aggTable = retime(aggTable,'regular', 'spline','SampleRate',1/dt); 
+aggTable = retime(aggTable,'regular', 'spline','SampleRate',1/dt);
 
-% Adding new columns for bedload rates. 
+% Adding new columns for bedload rates.
 % First in the original table.
 bedloadVar = diff(inputTable.Weight); % We compute the instant variation [V]
 bedloadTable = addvars(inputTable,[0;bedloadVar],'NewVariableNames','deltaBedload');
@@ -39,13 +39,30 @@ aggTable = addvars(aggTable,aggTable.PositiveDeltaBedload./dt,'NewVariableNames'
 
 
 % Plotting
-plot(bedloadTable.Time,bedloadTable.BedloadRate, DisplayName="Bedload Rate Original")
-xlabel("Time [hh:mm]")
-ylabel("Bedload rate [g/s]")
-if plotBoth
-    disp("Plotting both")
-    hold on
-    plot(aggTable.Time,aggTable.BedloadRate, DisplayName=strcat("Bedload Rate Agg at ",num2str(dt), "s"))
-    legend()
+if plotRate
+    figure()
+    plot(bedloadTable.Time,bedloadTable.BedloadRate, DisplayName="Bedload Rate Original")
+    xlabel("Time [hh:mm]")
+    ylabel("Bedload rate [g/s]")
+    if plotBoth
+        disp("Plotting both")
+        hold on
+        plot(aggTable.Time,aggTable.BedloadRate, DisplayName=strcat("Bedload Rate Agg at ",num2str(dt), "s"))
+        legend()
+    end
+end
+
+if plotCum
+    figure()
+    plot(bedloadTable.Time,bedloadTable.CumBedload, DisplayName="Bedload Rate Original")
+    xlabel("Time [hh:mm]")
+    ylabel("Bedload rate [g/s]")
+    if plotBoth
+        disp("Plotting both")
+        hold on
+        plot(aggTable.Time,aggTable.CumBedload, DisplayName=strcat("Bedload Rate Agg at ",num2str(dt), "s"))
+        legend()
+    end
+
 end
 end
