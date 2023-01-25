@@ -17,14 +17,12 @@
 % Time window for compute mean and register in text file.
 twindow = 10;
 drate = 1000;
-SavePath = "C:\Users\admin\Documents\GitHub\ForceSensorControl"; % Where to save the LogFiles.
+SavePath = "C:\Users\admin\Documents\GitHub\ForceSensorControl\logfiles"; % Where to save the LogFiles.
 % Decide if plotting or not data in real time.
 plotting = true;
 
 %%%%%%%%%%%%%%%%%%% DO NOT MODIFY FROM THIS POINT DOWN %%%%%%%%%%%%%%%%%%%%
 
-% Create folder
-mkdir(SavePath)
 % Reset workspace
 close all
 daqreset
