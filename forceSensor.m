@@ -23,6 +23,8 @@ plotting = true;
 
 %%%%%%%%%%%%%%%%%%% DO NOT MODIFY FROM THIS POINT DOWN %%%%%%%%%%%%%%%%%%%%
 
+% Create folder
+mkdir(SavePath)
 % Reset workspace
 close all
 daqreset
