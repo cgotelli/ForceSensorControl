@@ -61,7 +61,8 @@ while true
     c = clock;
 
     % Write to file the time and registered discharge value
-    fprintf(fid,'\n%s %02.6f', datetime(c,"Format","uuuuMMdd'T'HHmmss"), data_mean);
+    fprintf(fid,'\n%s %02.6f', datetime(c,"Format","uuuuMMdd'T'HHmmss"),...
+        data_mean);
 
     % Plotting the data in real time along with the mean value in the
     % window
