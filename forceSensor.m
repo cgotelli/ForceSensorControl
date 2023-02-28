@@ -15,7 +15,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% Parameters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Time window for compute mean and register in text file.
-twindow = 10;
+twindow = 60;
 drate = 1000;
 SavePath = "C:\Users\admin\Documents\GitHub\ForceSensorControl"; % Where to save the LogFiles.
 % Decide if plotting or not data in real time.
