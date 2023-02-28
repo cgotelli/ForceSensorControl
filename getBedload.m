@@ -69,7 +69,7 @@ end
 
 if plotCumSed
     figure()
-    plot(datetime("today")+bedloadTable.dt,bedloadTable.CumBedload,...
+    plot(bedloadTable.Time,bedloadTable.CumBedload,...
         DisplayName="Bedload Rate Original")
     title(Path(end-11:end))
     xlabel("Time [hh:mm]")
@@ -77,7 +77,7 @@ if plotCumSed
     if plotBoth
         disp("Plotting both")
         hold on
-        plot(datetime("today")+aggTable.dt,aggTable.CumBedload, ...
+        plot(aggTable.Time,aggTable.CumBedload, ...
             DisplayName=strcat("Bedload Rate Agg at ",num2str(newdt), "s"))
         legend()
     end

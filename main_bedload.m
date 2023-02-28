@@ -17,7 +17,7 @@ plotSedRate = true;         % Plot sediment rate timeseries for each file
 plotCumSed = true;          % Plot accumulated sediment timeseries for each file
 plotBoth = true;            % Plot the smoothed series in addition to the original
 originalTimeWindow = 10;    % What is the frequency at which the data was written in the logfile
-newTimeWindow = 60;         % The frequency at which the smoothness will be performed
+newTimeWindow = 120;         % The frequency at which the smoothness will be performed
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
