@@ -17,7 +17,7 @@
 % Time window for compute mean and register in text file.
 twindow = 60;
 drate = 1000;
-SavePath = "C:\Users\admin\Documents\GitHub\ForceSensorControl"; % Where to save the LogFiles.
+SavePath = "C:\Users\admin\Documents\GitHub\ForceSensorControl\logfiles"; % Where to save the LogFiles.
 % Decide if plotting or not data in real time.
 plotting = true;
 
@@ -61,12 +61,8 @@ while true
     c = clock;
 
     % Write to file the time and registered discharge value
-%     fprintf(fid, '\n%s %02.5f ',  strcat(sprintf('%d',c(1)),...
-%         sprintf('%02.0f',c(2)), sprintf('%02.0f',c(3)), ...
-%         sprintf('%02.0f',c(4)), sprintf('%02.0f',c(5)), ...
-%         sprintf('%02.0f',c(6))), data_mean);
-
-    fprintf(fid,'\n%s %02.6f', datetime(c,"Format","uuuuMMdd'T'HHmmss"), data_mean);
+    fprintf(fid,'\n%s %02.6f', datetime(c,"Format","uuuuMMdd'T'HHmmss"),...
+        data_mean);
 
     % Plotting the data in real time along with the mean value in the
     % window
