@@ -11,10 +11,10 @@ close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                             PARAMETERS                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-filesPath = "D:\git\cgotelli\ForceSensorControl\logfiles"; % Where the Logfiles are stored
+filesPath = "C:\Users\admin\Documents\GitHub\ForceSensorControl\logfiles"; % Where the Logfiles are stored
 
-plotSedRate = true;         % Plot sediment rate timeseries for each file
-plotCumSed = true;          % Plot accumulated sediment timeseries for each file
+plotSedRate = false;         % Plot sediment rate timeseries for each file
+plotCumSed = false;          % Plot accumulated sediment timeseries for each file
 plotBoth = false;            % Plot the smoothed series in addition to the original
 originalTimeWindow = 1;     % What is the frequency at which the data was written in the logfile
 lag = 60;                   % The frequency at which the smoothness will be performed
@@ -51,7 +51,7 @@ end
 % Plotting the resulting complete time series for the experiment
 % Bed load rate
 figure()
-plot(datetime("today")+allAggTable.dt, allAggTable.PositiveBedloadRate, ...
+plot(datetime("today")+allAggTable.dt, allAggTable.BedloadRate, ...
         DisplayName=strcat("Bedload Rate Agg at ",num2str(lag),...
         "s"))
 
