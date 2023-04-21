@@ -13,8 +13,8 @@ close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 filesPath = "D:\git\cgotelli\ForceSensorControl\logfiles"; % Where the Logfiles are stored
 
-plotSedRate = true;         % Plot sediment rate timeseries for each file
-plotCumSed = true;          % Plot accumulated sediment timeseries for each file
+plotSedRate = false;         % Plot sediment rate timeseries for each file
+plotCumSed = false;          % Plot accumulated sediment timeseries for each file
 plotBoth = false;            % Plot the smoothed series in addition to the original
 originalTimeWindow = 1;     % What is the frequency at which the data was written in the logfile
 lag = 60;                   % The frequency at which the smoothness will be performed
@@ -51,37 +51,37 @@ end
 % Plotting the resulting complete time series for the experiment
 % Bed load rate
 figure()
-plot(datetime("today")+allAggTable.dt, allAggTable.PositiveBedloadRate, ...
-        DisplayName=strcat("Bedload Rate Agg at ",num2str(lag),...
-        "s"))
+area(allAggTable.Time(1)+allAggTable.dt, allAggTable.PositiveBedloadRate,...
+        DisplayName=strcat("Bedload Rate each ",num2str(lag),...
+        "s"), FaceColor="#77AC30",EdgeColor="none", FaceAlpha=0.5)
 
 hold on 
-plot(datetime("today")+allBLTable.dt, zeros(height(allBLTable),1),...
-        'k--', DisplayName='Zero')
+% plot(datetime("today")+allBLTable.dt, zeros(height(allBLTable),1).*...
+%     mean(allAggTable.PositiveBedloadRate),...
+%         'k--', DisplayName='Zero')
+plot(allAggTable.Time(1)+allAggTable.dt, ones(height(allAggTable),1)*...
+    mean(allAggTable.PositiveBedloadRate),'r-', ...
+    DisplayName='Mean sample each 1 min')
+plot(allAggTable.Time(1)+allAggTable.dt, ones(height(allAggTable),1)*...
+    (allBLTable.CumBedload(end)-allBLTable.CumBedload(1))/...
+    length(allBLTable.PositiveBedloadRate),...
+        'k--', DisplayName='Mean 1st and last values')
 xlabel("Time [hh:mm]")
 ylabel("Bedload rate [g/s]")
-if plotBoth
-    disp("Plotting both")
-    plot(datetime("today")+allBLTable.dt,allBLTable.PositiveBedloadRate, ... 
-        DisplayName="Bedload Rate Original")
-    
-    legend()
-end
+legend(Location="northwest")
+
 
 %% Accumulated bed load
 figure()
-plot(datetime("today")+allBLTable.dt, allBLTable.CumBedload, ...
+plot(allBLTable.Time(1)+allBLTable.dt, allBLTable.CumBedload, ...
     DisplayName="All values")
 hold on
-plot(datetime("today")+allBLTable.dt(1:60:end), allBLTable.CumBedload(1:60:end), ...
+plot(allBLTable.Time(1)+allBLTable.dt(1:60:end), ...
+    allBLTable.CumBedload(1:60:end), ...
     DisplayName="1 each 60s")
 
-% plot(datetime("today")+allBLTable.dt(1:30:end), allBLTable.CumBedload(1:30:end), ...
-%     DisplayName="1 each 30s")
-% plot(datetime("today")+allBLTable.dt(1:20:end), allBLTable.CumBedload(1:20:end), ...
-%     DisplayName="1 each 20s")
-% plot(datetime("today")+allBLTable.dt(1:10:end), allBLTable.CumBedload(1:10:end), ...
-%     DisplayName="1 each 10s")
 xlabel("Time [hh:mm]")
 ylabel("Accumulated Bedload")
-legend()
+legend(Location="northwest")
+
+save("timeSeries.mat","allBLTable","allAggTable");
