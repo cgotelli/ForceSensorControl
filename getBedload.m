@@ -8,7 +8,7 @@ function [bedloadTable, aggTable]= getBedload(Path, plotSedRate, ...
 % weight from one measurement to the next.
 
 inputTable = readtimetable(Path);
-values = inputTable.Value.*26.649-4.9605;
+values = inputTable.Value.*26.718-3.7752;
 values = values*1000;
 inputTable = addvars(inputTable,values,'NewVariableNames','Weight');
 inputTable = addvars(inputTable,values-values(1),'NewVariableNames',...
