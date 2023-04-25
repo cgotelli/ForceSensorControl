@@ -11,7 +11,7 @@ close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                             PARAMETERS                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-filesPath = "C:\Users\EPFL-LHE\Documents\GitHub\ForceSensorControl\logfiles"; % Where the Logfiles are stored
+filesPath = "C:\Users\admin\Documents\GitHub\ForceSensorControl\logfiles"; % Where the Logfiles are stored
 
 plotSedRate = false;         % Plot sediment rate timeseries for each file
 plotCumSed = false;          % Plot accumulated sediment timeseries for each file
