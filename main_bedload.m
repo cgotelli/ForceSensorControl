@@ -11,13 +11,13 @@ close all
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                             PARAMETERS                                  %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-filesPath = "C:\Users\admin\Documents\GitHub\ForceSensorControl\logfiles"; % Where the Logfiles are stored
+filesPath = "E:\00.EXPERIMENTS\00_bedload\Experiment02"; % Where the Logfiles are stored
 
 plotSedRate = false;         % Plot sediment rate timeseries for each file
 plotCumSed = false;          % Plot accumulated sediment timeseries for each file
 plotBoth = false;            % Plot the smoothed series in addition to the original
 originalTimeWindow = 1;     % What is the frequency at which the data was written in the logfile
-lag = 60;                   % The frequency at which the smoothness will be performed
+lag = 60;                   % The step for taking values from the full resolution table. E.g, if you select 60, it will take one value each 60 seconds.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
