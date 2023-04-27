@@ -1,5 +1,4 @@
-function [bedloadTable, aggTable]= getBedload(Path, plotSedRate, ...
-    plotCumSed, originaldt, lag)
+function [bedloadTable, aggTable,firstMeasurement]= getBedload(Path, plotSedRate, plotCumSed, originaldt, lag)
 % GETBEDLOAD
 % This function reads a file and returns two timetables: the raw table with
 % the default dt (10 seconds), and other with a frequency defined by the
@@ -11,7 +10,7 @@ inputTable = readtimetable(Path);
 if any("ExtraVar1" == string(inputTable.Properties.VariableNames))
     inputTable = removevars(inputTable,"ExtraVar1");
 end
-
+firstMeasurement = inputTable.Time(1);
 values = inputTable.Value.*26.718-3.7752; % Conversion to kilograms
 values = values*1000; % Conversion to grams
 inputTable = addvars(inputTable,values,'NewVariableNames','Weight'); % New column with weight in kg

@@ -26,6 +26,14 @@ ft = fittype( 'poly1' );
 % Plot fit with data.
 figure( 'Name', 'Linear fit' );
 h = plot( fitresult, xData, yData );
+h(1).Color="#1B4965";
+h(1).LineWidth=1.2;
+h(1).LineStyle="-";
+h(1).Marker="none";
+h(2).Color="#ba181b";
+h(2).LineStyle="-.";
+h(2).LineWidth=0.5;
+grid off
 legend( h, 'Data vs. Time', 'Linear fit ', 'Location', 'NorthWest', 'Interpreter', 'latex' );
 % Label axes
 xlabel( 'Time [min]', 'Interpreter', 'none' );
